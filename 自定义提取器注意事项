@@ -1,0 +1,28 @@
+安装和使用说明
+1. 安装提取器
+
+将上面的代码保存为 xchina.py 文件，然后将其放置在 gallery-dl 的提取器目录中。提取器目录的位置取决于你的操作系统和安装方式：
+    Windows:
+        如果使用 pip 安装: Python安装目录\Lib\site-packages\gallery_dl\extractor\
+        如果使用可执行文件: 与 gallery-dl.exe 同一目录下的 gallery_dl\extractor\ 文件夹
+2. 配置文件
+3. 使用提取器
+4. 验证提取器是否被识别 可以使用以下命令验证 gallery-dl 是否识别了你的自定义提取器：
+gallery-dl --list-extractors | grep xchina
+5. gallery-dl 在 Windows 上查找 config.json 的默认路径，按优先级从高到低排列：
+Windows	%APPDATA%\gallery-dl\config.json(通常为 C:\Users\你的用户名\AppData\Roaming\gallery-dl\config.json)
+用户应用程序数据目录 %USERPROFILE%\gallery-dl\config.json (即 C:\Users\你的用户名\gallery-dl\config.json)	用户主目录下
+%USERPROFILE%\gallery-dl.conf (即 C:\Users\你的用户名\gallery-dl.conf)	用户主目录下的 .conf 文件 与 gallery-dl.exe 同目录下的 gallery-dl.conf
+
+6.自定义提取器未被识别：a.确保你的 xchina.py 文件放在了正确的路径,b.检查提取器代码结构:包括类定义，category 属性，pattern 属性
+c.初始化方法：在 __init__ 方法中，通常需要调用父类的初始化方法并处理匹配到的分组。
+非常重要：打开C:\Users\maomaocat\AppData\Local\Programs\Python\Python310\Lib\site-packages\gallery_dl\extractor\__init__.py,
+修改modules ，增加："xchina",
+
+7.通过 gallery-dl 的后处理命令（postprocessor commands）来实现下载后自动将 WebP 格式图片转换为 JPG
+# 访问 https://imagemagick.org/script/download.php
+
+8.将提取的URL保存到文本文件
+allery-dl --get-urls "https://xchina.fit/amateur/id-68b8347e54db0.html"
+下面语句只能在命令行执行：
+gallery-dl --get-urls "https://xchina.fit/amateur/id-68b8347e54db0.html" > url20250904.txt
