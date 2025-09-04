@@ -21,6 +21,8 @@ c.初始化方法：在 __init__ 方法中，通常需要调用父类的初始�
 
 7.通过 gallery-dl 的后处理命令（postprocessor commands）来实现下载后自动将 WebP 格式图片转换为 JPG
 # 访问 https://imagemagick.org/script/download.php
+批量转换当前目录webp图片为JPG图片：
+magick mogrify -format JPEG *.webp
 
 8.将提取的URL保存到文本文件
 allery-dl --get-urls "https://xchina.fit/amateur/id-68b8347e54db0.html"
