@@ -1,6 +1,15 @@
 {
+
   "extractor": {
     "xchina": {
+      "proxy": "http://127.0.0.1:10809",
+      "sleep-request": 2.5
+    },
+    "xchinaamateur": {
+      "proxy": "http://127.0.0.1:10809",
+      "sleep-request": 2.5
+    },
+    "xchinaphoto": {
       "proxy": "http://127.0.0.1:10809",
       "sleep-request": 2.5
     }
