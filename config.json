@@ -1,0 +1,30 @@
+{
+  "extractor": {
+    "xchina": {
+      "proxy": "http://127.0.0.1:10809",
+      "sleep-request": 2.5
+    }
+  },
+  "downloader": {
+    "proxy": "http://127.0.0.1:10809"
+  },
+  "output": {
+    "filename": "{model}_{platname}_{title}_{num:>03}.{extension}",
+    "directory": ["{category}", "{model}"],
+    "skip": true
+  },
+  "postprocessors": [
+    {
+      "name": "exec",
+      "command": ["magick", "{}", "-quality", "95", "{}.jpg"],
+      "when": "after",
+      "filter": "extension == 'webp'"
+    },
+    {
+      "name": "exec",
+      "command": ["cmd", "/c", "del", "/f", "/q", "{}"],
+      "when": "after",
+      "filter": "extension == 'webp' and success == 1"
+    }
+  ]
+}
